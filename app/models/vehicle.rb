@@ -16,7 +16,7 @@ class Vehicle < ApplicationRecord
   private
 
   def set_model
-    self.vehicle_model = VehicleModel.by_brand(brand).find_by(name: model)
+    self.vehicle_model = VehicleBrand.find_by(name: brand).vehicle_models.find_or_create_by(name: model)
   end
 
 end

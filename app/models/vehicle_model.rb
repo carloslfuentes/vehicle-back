@@ -14,6 +14,7 @@ class VehicleModel < ApplicationRecord
   private
 
   def set_brand
+    return if vehicle_brand.present?
     _brand = brand.is_a?(VehicleBrand) ? brand : VehicleBrand.find_or_create_by(name: brand)
     self.vehicle_brand = _brand
   end
